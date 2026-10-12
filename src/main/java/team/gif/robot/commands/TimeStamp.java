@@ -1,17 +1,22 @@
 package team.gif.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class CommandTemplate extends Command {
+public class TimeStamp extends Command {
+    //Timer timer = new Timer();
 
-    public CommandTemplate() {
+    public TimeStamp() {
         super();
+
         //addRequirements(Robot.climber); // uncomment
     }
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {}
+    public void initialize() {
+        System.out.println(Timer.getFPGATimestamp());
+    }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
@@ -20,7 +25,7 @@ public class CommandTemplate extends Command {
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called when the command ends or is interrupted.

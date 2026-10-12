@@ -7,8 +7,15 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.SparkMaxVoltage;
+import team.gif.robot.commands.TalonCommandJoystick;
 import team.gif.robot.commands.drivetrain.DriveSwerve;
+import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.SparkMaxVoltageDrive;
+import team.gif.robot.subsystems.Talon1;
+import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.drivers.Pigeon2_0;
+import team.gif.robot.subsystems.drivers.swerve.SparkMaxDriveMotor;
 import team.gif.robot.subsystems.drivers.swerve.utilities.SwerveConfiguration;
 import team.gif.robot.subsystems.drivers.swerve.SwerveDrivetrain;
 import team.gif.robot.subsystems.drivers.swerve.TalonFXDriveMotor;
@@ -32,7 +39,14 @@ public class Robot extends TimedRobot {
     public static SwerveConfiguration swerveConfig;
     public static SwerveDrivetrain swerveDrive;
 
+    public static LimitSwitch limitSwitch;
+
     public static UI ui;
+    public static Talon1 talon;
+
+    public static Pigeon pigeon1;
+
+    public static SparkMaxVoltageDrive neoMotor;
 
     public static final boolean enableSwerveDebug = true;
     public static final boolean fullDashboard = true;
@@ -56,10 +70,18 @@ public class Robot extends TimedRobot {
         swerveDrive.enableDebugMode();
 //        swerveDrive.addLimelight("limelight-front");
 
+        talon = new Talon1();
+        talon.setDefaultCommand(new TalonCommandJoystick());
+
+        limitSwitch =new LimitSwitch();
+
+        pigeon1 = new Pigeon(RobotMap.PIGEON_ID);
+
+        neoMotor = new SparkMaxVoltageDrive();
+
         //These should be at or near the bottom
         oi = new OI();
         ui = new UI();
-
     }
 
     /**
@@ -77,8 +99,10 @@ public class Robot extends TimedRobot {
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
 
-        ui.update();
+        //System.out.println(limitSwitch.status());
+        //System.out.println(pigeon1.getHeading());
 
+        ui.update();
     }
 
     /** This function is called once each time the robot enters Disabled mode. */
@@ -119,7 +143,9 @@ public class Robot extends TimedRobot {
 
     /** This function is called periodically during test mode. */
     @Override
-    public void testPeriodic() {}
+    public void testPeriodic() {
+
+    }
 
     /** This function is called once when the robot is first started up. */
     @Override

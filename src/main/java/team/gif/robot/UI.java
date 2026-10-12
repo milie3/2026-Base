@@ -25,5 +25,8 @@ public class UI {
     public void update() {
         //Example
         //SmartDashboard.putNumber("Climber Position", Robot.elevator.getPosition())
+        SmartDashboard.putBoolean("Limit Switch status: ", Robot.limitSwitch.status());
+        SmartDashboard.putNumber("Pigeon status: ", Robot.pigeon1.getHeading());
+
     }
 }

@@ -86,4 +86,9 @@ public final class Constants {
     public static final class Joystick {
         public static final double DEADBAND = 0.1;
     }
+
+    public static final double PERCENT_OUTPUT_FORWARD = 0.5;
+    public static final double PERCENT_OUTPUT_BACKWARD = -0.5;
+
+    public static final int VOLTAGE_SPARK_MAX = 5;
 }

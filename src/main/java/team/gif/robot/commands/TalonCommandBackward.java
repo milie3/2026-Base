@@ -1,17 +1,21 @@
 package team.gif.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import team.gif.robot.Constants;
+import team.gif.robot.Robot;
 
-public class CommandTemplate extends Command {
+public class TalonCommandBackward extends Command {
 
-    public CommandTemplate() {
+    public TalonCommandBackward() {
         super();
-        //addRequirements(Robot.climber); // uncomment
+        addRequirements(Robot.talon); // uncomment
     }
 
     // Called when the command is initially scheduled.
     @Override
-    public void initialize() {}
+    public void initialize() {
+        Robot.talon.output(Constants.PERCENT_OUTPUT_BACKWARD);
+    }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
@@ -25,5 +29,7 @@ public class CommandTemplate extends Command {
 
     // Called when the command ends or is interrupted.
     @Override
-    public void end(boolean interrupted) {}
+    public void end(boolean interrupted) {
+        Robot.talon.output(0.0);
+    }
 }
