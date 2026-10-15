@@ -9,18 +9,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import team.gif.robot.commands.SparkMaxVoltage;
 import team.gif.robot.commands.TalonCommandJoystick;
-import team.gif.robot.commands.drivetrain.DriveSwerve;
 import team.gif.robot.subsystems.LimitSwitch;
-import team.gif.robot.subsystems.SparkMaxVoltageDrive;
+import team.gif.robot.subsystems.SparkMaxDrive;
 import team.gif.robot.subsystems.Talon1;
 import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.drivers.Pigeon2_0;
-import team.gif.robot.subsystems.drivers.swerve.SparkMaxDriveMotor;
-import team.gif.robot.subsystems.drivers.swerve.utilities.SwerveConfiguration;
-import team.gif.robot.subsystems.drivers.swerve.SwerveDrivetrain;
-import team.gif.robot.subsystems.drivers.swerve.TalonFXDriveMotor;
-import team.gif.robot.subsystems.drivers.swerve.TalonFXTurnMotor;
-import team.gif.robot.subsystems.drivers.swerve.CANCoderEncoder;
+
 
 
 /**
@@ -36,8 +30,6 @@ public class Robot extends TimedRobot {
 
     public static Pigeon2_0 pigeon;
 
-    public static SwerveConfiguration swerveConfig;
-    public static SwerveDrivetrain swerveDrive;
 
     public static LimitSwitch limitSwitch;
 
@@ -46,7 +38,7 @@ public class Robot extends TimedRobot {
 
     public static Pigeon pigeon1;
 
-    public static SparkMaxVoltageDrive neoMotor;
+    public static SparkMaxDrive neoMotor;
 
     public static final boolean enableSwerveDebug = true;
     public static final boolean fullDashboard = true;
@@ -63,12 +55,6 @@ public class Robot extends TimedRobot {
 
         pigeon = new Pigeon2_0(RobotMap.PIGEON_ID);
 
-        swerveConfig = new SwerveConfiguration(new RobotMap.Mk4Map(), new Constants.Mk4Constants(), TalonFXDriveMotor::new, TalonFXTurnMotor::new, CANCoderEncoder::new);
-//        swerveConfig = new SwerveConfiguration(new RobotMap.Mk3Map(), new Constants.Mk3Constants(), SparkMaxDriveMotor::new, TalonSRXTurnMotorEncoder::new, null);
-        swerveDrive = new SwerveDrivetrain(swerveConfig);
-        swerveDrive.setDefaultCommand(new DriveSwerve());
-        swerveDrive.enableDebugMode();
-//        swerveDrive.addLimelight("limelight-front");
 
         talon = new Talon1();
         talon.setDefaultCommand(new TalonCommandJoystick());
@@ -77,7 +63,7 @@ public class Robot extends TimedRobot {
 
         pigeon1 = new Pigeon(RobotMap.PIGEON_ID);
 
-        neoMotor = new SparkMaxVoltageDrive();
+        neoMotor = new SparkMaxDrive();
 
         //These should be at or near the bottom
         oi = new OI();
@@ -99,7 +85,7 @@ public class Robot extends TimedRobot {
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
 
-        //System.out.println(limitSwitch.status());
+        System.out.println(limitSwitch.status());
         //System.out.println(pigeon1.getHeading());
 
         ui.update();

@@ -8,20 +8,19 @@ public class TalonCommandJoystick extends Command {
 
     public TalonCommandJoystick() {
         super();
-        //addRequirements(Robot.climber); // uncomment
+        addRequirements(Robot.talon); // uncomment
     }
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        double forward = Robot.oi.driver.getLeftY(); // need to invert because -Y is away, +Y is pull back
-        Robot.talon.output(forward);
     }
 
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-
+        double run = Robot.oi.driver.getLeftY();
+        Robot.talon.output(run);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

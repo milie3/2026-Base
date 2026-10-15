@@ -3,6 +3,7 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import team.gif.robot.commands.SparkMaxSetpoint;
 import team.gif.robot.commands.SparkMaxVoltage;
 import team.gif.robot.commands.TalonCommandBackward;
 import team.gif.robot.commands.TalonCommandForward;
@@ -97,6 +98,7 @@ public class OI {
         dA.onTrue(new TimeStamp());
         dX.whileTrue(new TalonCommandForward());
         dY.whileTrue(new TalonCommandBackward());
-        dB.whileTrue(new SparkMaxVoltage());
+        dLBump.whileTrue(new SparkMaxVoltage());
+        dRBump.whileTrue(new SparkMaxSetpoint());
     }
 }

@@ -28,5 +28,8 @@ public class UI {
         SmartDashboard.putBoolean("Limit Switch status: ", Robot.limitSwitch.status());
         SmartDashboard.putNumber("Pigeon status: ", Robot.pigeon1.getHeading());
 
+        // SmartDashboard.putNumber("Current Position: ", Robot.neoMotor.currentPosition());
+        // SmartDashboard.putNumber("Current Velocity: ", Robot.neoMotor.currentVelocity());
+
     }
 }

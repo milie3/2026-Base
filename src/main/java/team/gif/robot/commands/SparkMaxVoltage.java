@@ -4,14 +4,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import team.gif.robot.Constants;
 import team.gif.robot.Robot;
 import team.gif.robot.RobotMap;
-import team.gif.robot.subsystems.drivers.swerve.SparkMaxDriveMotor;
 
 public class SparkMaxVoltage extends Command {
 
     public SparkMaxVoltage() {
         super();
         addRequirements(Robot.neoMotor);
-        //addRequirements(Robot.climber); // uncomment
     }
 
     // Called when the command is initially scheduled.
@@ -25,7 +23,7 @@ public class SparkMaxVoltage extends Command {
     // Return true when the command should end, false if it should continue. Runs every ~20ms.
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called when the command ends or is interrupted.
