@@ -32,6 +32,6 @@ public class TalonCommandJoystick extends Command {
     // Called when the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        Robot.talon.output(0.0);
+
     }
 }

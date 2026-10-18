@@ -7,7 +7,6 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import team.gif.robot.commands.SparkMaxVoltage;
 import team.gif.robot.commands.TalonCommandJoystick;
 import team.gif.robot.subsystems.LimitSwitch;
 import team.gif.robot.subsystems.SparkMaxDrive;
@@ -85,8 +84,8 @@ public class Robot extends TimedRobot {
         // block in order for anything in the Command-based framework to work.
         CommandScheduler.getInstance().run();
 
-        System.out.println(limitSwitch.status());
-        //System.out.println(pigeon1.getHeading());
+        //System.out.println(limitSwitch.status());
+        System.out.println(pigeon1.getHeading());
 
         ui.update();
     }
