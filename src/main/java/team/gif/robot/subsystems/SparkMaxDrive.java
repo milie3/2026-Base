@@ -3,8 +3,13 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package team.gif.robot.subsystems;
+import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.ResetMode;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkFlexConfig;
+import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import team.gif.robot.RobotMap;
@@ -16,17 +21,29 @@ public class SparkMaxDrive extends SubsystemBase {
     SparkMax neoMotor;
     RelativeEncoder encoder;
     PIDController pid;
+    SparkMaxConfig config;
 
 
     public SparkMaxDrive() {
-        double kP = 0.5;
+        config = new SparkMaxConfig();
+
+        double kP = 0.012;
         double kI = 0;
         double kD = 0;
 
         neoMotor= new SparkMax(RobotMap.NEO_MOTOR, kBrushless);
         encoder = neoMotor.getEncoder();
         pid = new PIDController(kP, kI, kD);
+
+        config.idleMode(SparkBaseConfig.IdleMode.kBrake);
+        config.inverted(true);
+        neoMotor.configure(config,
+                ResetMode.kResetSafeParameters,
+                PersistMode.kPersistParameters
+        );
     }
+
+
 
     public void voltage(double input){
         neoMotor.setVoltage(input);
