@@ -18,6 +18,11 @@ import edu.wpi.first.math.system.plant.DCMotor;
 public final class Constants {
     public static final double DEBOUNCE_DEFAULT = 0.020;
 
+    //These constants should be referenced via Robot.swerveDrive.getConstants();
+
+
+
+
     public static final class Joystick {
         public static final double DEADBAND = 0.1;
     }
@@ -25,14 +30,7 @@ public final class Constants {
     public static final double PERCENT_OUTPUT_FORWARD = 0.5;
     public static final double PERCENT_OUTPUT_BACKWARD = -0.5;
 
-    public static final int VOLTAGE_SPARK_MAX_FORWARD = 6;
-    public static final int VOLTAGE_SPARK_MAX_BACK = -6;
-    public static final double SETPOINT_SPARK_MAX = 0.5;
-    public static final int RPM = 10;
+    public static final int VOLTAGE_SPARK_MAX = 5;
 
-    public static double kP = 0.0012;
-    //increase if too less, vice versa
-    double kI = 0;
-    double kD = 0;
-
+    public static final int SETPOINT_SPARK_MAX = 10;
 }
