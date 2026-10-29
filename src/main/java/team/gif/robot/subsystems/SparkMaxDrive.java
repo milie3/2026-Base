@@ -27,7 +27,8 @@ public class SparkMaxDrive extends SubsystemBase {
     public SparkMaxDrive() {
         config = new SparkMaxConfig();
 
-        double kP = 0.012;
+        double kP = 0.0012;
+        //increase if too less, vice versa
         double kI = 0;
         double kD = 0;
 

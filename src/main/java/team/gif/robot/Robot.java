@@ -85,7 +85,7 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().run();
 
         //System.out.println(limitSwitch.status());
-        System.out.println(pigeon1.getHeading());
+        //System.out.println(pigeon1.getHeading());
 
         ui.update();
     }

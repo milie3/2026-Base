@@ -27,6 +27,12 @@ public final class Constants {
 
     public static final int VOLTAGE_SPARK_MAX_FORWARD = 6;
     public static final int VOLTAGE_SPARK_MAX_BACK = -6;
-    public static final int SETPOINT_SPARK_MAX = 10;
+    public static final double SETPOINT_SPARK_MAX = 0.5;
     public static final int RPM = 10;
+
+    public static double kP = 0.0012;
+    //increase if too less, vice versa
+    double kI = 0;
+    double kD = 0;
+
 }

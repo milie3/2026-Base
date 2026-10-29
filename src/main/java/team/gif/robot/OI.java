@@ -102,6 +102,6 @@ public class OI {
         dB.whileTrue(new TalonCommandHalf());
         dLBump.whileTrue(new SparkMaxVoltageForward());
         dRBump.whileTrue(new SparkMaxVoltageBack());
-        dBack.whileTrue(new SparkMaxSetpoint());
+        dBack.onTrue(new SparkMaxSetpoint());
     }
 }
