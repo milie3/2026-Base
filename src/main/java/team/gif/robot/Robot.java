@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 //import team.gif.robot.commands.SparkMaxVoltage;
 import team.gif.robot.commands.TalonCommandJoystick;
 import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.Pneumatics;
 import team.gif.robot.subsystems.SparkMaxDrive;
 import team.gif.robot.subsystems.Talon1;
 import team.gif.robot.subsystems.drivers.Pigeon;
@@ -40,8 +41,7 @@ public class Robot extends TimedRobot {
 
     public static SparkMaxDrive neoMotor;
 
-    public static final boolean enableSwerveDebug = true;
-    public static final boolean fullDashboard = true;
+    public static Pneumatics pneumatics;
 
 
     /**
@@ -64,6 +64,8 @@ public class Robot extends TimedRobot {
         pigeon1 = new Pigeon(RobotMap.PIGEON_ID);
 
         neoMotor = new SparkMaxDrive();
+
+        pneumatics = new Pneumatics();
 
         //These should be at or near the bottom
         oi = new OI();

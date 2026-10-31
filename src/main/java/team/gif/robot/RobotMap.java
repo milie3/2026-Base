@@ -14,4 +14,8 @@ public abstract class RobotMap {
     public static final int LIMIT_SWITCH_ID = 9;
     public static final int TALONSRX_ID = 10;
     public static final int NEO_MOTOR= 45;
+
+    public static final int CAN_ID_SOLENOID = 6;
+    public static final int SOLENOID_FORWARD_CHANNEL = 1;
+    public static final int SOLENOID_REVERSE_CHANNEL = 2;
 }

@@ -3,11 +3,13 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import team.gif.robot.commands.Solenoid;
 import team.gif.robot.commands.SparkMaxSetpoint;
-import team.gif.robot.commands.SparkMaxVoltage;
+import team.gif.robot.commands.SparkMaxVelocity;
+import team.gif.robot.commands.SparkMaxVoltageBack;
+import team.gif.robot.commands.SparkMaxVoltageForward;
 import team.gif.robot.commands.TalonCommandBackward;
 import team.gif.robot.commands.TalonCommandForward;
-import team.gif.robot.commands.TalonCommandJoystick;
 import team.gif.robot.commands.TimeStamp;
 
 public class OI {
@@ -96,9 +98,15 @@ public class OI {
          *   aX.onTrue(new PrintCommand("aX"));
          */
         dA.onTrue(new TimeStamp());
+        dRTrigger.onTrue(new Solenoid());
+
         dX.whileTrue(new TalonCommandForward());
         dY.whileTrue(new TalonCommandBackward());
-        dLBump.whileTrue(new SparkMaxVoltage());
-        dRBump.whileTrue(new SparkMaxSetpoint());
+
+        dLBump.whileTrue(new SparkMaxVoltageBack());
+        dRBump.whileTrue(new SparkMaxVoltageForward());
+        //dB.whileTrue(new SparkMaxSetpoint());
+        dB.whileTrue(new SparkMaxVelocity());
+
     }
 }

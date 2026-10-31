@@ -16,16 +16,19 @@ public class SparkMaxDrive extends SubsystemBase {
     SparkMax neoMotor;
     RelativeEncoder encoder;
     PIDController pid;
+    PIDController velocityPid;
+    //private static final double NEO_KV = 12.0 / 5676.0;
 
 
     public SparkMaxDrive() {
-        double kP = 0.5;
-        double kI = 0;
+        double kP = 1;
+        double kI = 0.02;
         double kD = 0;
 
         neoMotor= new SparkMax(RobotMap.NEO_MOTOR, kBrushless);
         encoder = neoMotor.getEncoder();
         pid = new PIDController(kP, kI, kD);
+        encoder.setPosition(0);
     }
 
     public void voltage(double input){
@@ -41,7 +44,9 @@ public class SparkMaxDrive extends SubsystemBase {
     }
 
     public void rpmControl(double input){
-
+        //voltage(input * velocityPid.calculate(encoder.getVelocity(), input));
+        neoMotor.set(velocityPid.calculate(encoder.getVelocity(), input)); // NEW
+// NEW
     }
 
     public double currentVelocity(){
@@ -49,4 +54,7 @@ public class SparkMaxDrive extends SubsystemBase {
     }
 
 
+    public void stopMotor() {
+        neoMotor.stopMotor();
+    }
 }

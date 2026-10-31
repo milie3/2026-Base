@@ -30,7 +30,9 @@ public final class Constants {
     public static final double PERCENT_OUTPUT_FORWARD = 0.5;
     public static final double PERCENT_OUTPUT_BACKWARD = -0.5;
 
-    public static final int VOLTAGE_SPARK_MAX = 5;
+    public static final int VOLTAGE_SPARK_MAX_FORWARD = 2;
+    public static final int VOLTAGE_SPARK_MAX_BACK = 2;
 
-    public static final int SETPOINT_SPARK_MAX = 10;
+    public static final double SETPOINT_SPARK_MAX = 0.5;
+    public static final double RPM_SPARK_MAX = 1250;
 }
